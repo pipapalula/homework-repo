@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for...of</title>
+    <script>
+        {const cart = ['사과','바나나','우유']
+        /* 
+        for (let 변수 of 배열){
+        배열 값은 for...of
+        객체 key는 for...in 밸류는 []대괄호로 불러오기
+        }
+        */
+        for (let item of cart) {
+            console.log(item)
+        }
+        }
+        //번호붙혀 출력 문자열이라 ``로 불러옴 (`${}. ${}`); 이렇게
+        {   
+            const cart = ['사과','바나나','우유']
+            let index = 1;
+            for (let item of cart){
+                console.log(`${index}. ${item}`);
+                index++;
+            }
+        }
+        //길이가 2글자 이상인 것만출력
+        {   
+            const cart =['사과','바나나','우유']
+            for(let item of cart) {
+                if(item.length >= 2){
+                    console.log(item);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

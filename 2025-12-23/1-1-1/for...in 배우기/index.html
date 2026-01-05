@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for...in 배우기</title>
+    <script>
+        /* 
+        객체 안에 들어있는 key들을 하나씩 꺼내는 반복문
+
+        for (변수 in 객체) {
+         객체 속성 하나씩 접근
+        }
+        */
+       {
+        const me = {
+            name: '정범',
+            age: 29,
+            city: '광주'
+        };
+
+        for (let key in me){
+            console.log(key);
+        }
+       } /* for in key만 뽑아줌
+            value 꺼내는법!
+       */
+      {
+        const me = {
+            name: '정범',
+            age: 29,
+            city: '광주'
+        };
+        for (let key in me){
+            console.log(me[key]);
+        } // []대괄호 접근
+      }
+
+      {
+        const me = {
+            name:'정범',
+            age: 29,
+            city: '광주'
+        };
+        for (let key in me){
+            console.log(key,me[key])
+        }
+      }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 Array 배우기</title>
+
+    <script>
+        /* 배열(Array)란? 
+            지금까지는 변수 하나에 값 하나만 넣었다. 배열은 마치 계란판과 같다.
+            하나의 이름으로 여러개의 값을 순서대로 담을수 있다 []대괄호사용
+        */
+
+        {let signals = ["빨강", "노랑","파랑"]
+        // 프로그래밍 숫자 셀때 0부터 시작 (이걸 인덱스 라고 부름)
+        // '빨강' = 0번쨰 '노랑' = 첫번째 '파랑' = 두번쨰
+        signals[2] = '초록';
+        console.log(signals);}
+
+        /* 추가,제거,대기열 관리
+            push : 줄의 맨뒤에 사람 세우기
+            unshift: 줄의 맨앞에 쏙 끼워넣기
+            shift : 줄의 맨앞 사람 뺴기
+            pop: 줄의 맨 뒷사람 뺴기
+        */
+       {let queue = []
+       queue.push("철수");
+       queue.push("영희");
+       queue.unshift("민수");
+
+       let enteredPerson = queue.shift();
+       console.log(enteredPerson + "님이 입장하셨습니다.");
+    }
+     //1. 빈대기열 만들기
+     {
+        let queue = [];
+        //2. 철수, 영희 뒤로 줄서기 (push)
+        queue.push("철수");
+        queue.push("영희");
+        console.log("줄 서기 후:",queue);
+
+        queue.unshift("민수");
+        console.log("새치기 후 :",queue);
+
+        let person = queue.shift();
+        console.log(`[안내] ${person}님이 입장하셨습니다.`);
+
+        //현재 대기열 상태
+        console.log("현재 대기열:", queue);
+     }
+     // splice 사용 해서 자르고 붙이기 splice 배열 데이터 삭제,추가,교체 한번에가능
+     /* splice 사용법 (공식)
+        splice는 괄호 안에 숫자를 최소 2개 넣어야 된다
+
+        배열이름.splice(시작위치, 삭제할개수,추가할것...)
+
+        시작위치: 몇번째 칸(인덱스)부터 손댈 것인가?
+        삭제할개수: 그 위치부터 몇개를 지울 것인가 (0이면 안지움)
+        추가할것:(선택사항) 삭제한 자리에 뭔가 채워넣을것인가?
+     */
+    {
+        let menus = ["짜장","짬뽕","탕수육","볶음밥",]
+
+        menus.splice(1,1)
+
+        console.log(menus)
+
+        menus.splice(1,1,"군만두","콜라");
+
+        console.log("최종 메뉴:",menus);
+    }
+    // 실습 잘라내기
+    {
+        let ranks = [1,2,3,4,5]
+
+        const top3 = ranks.slice(0,3);
+
+        console.log(top3);
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

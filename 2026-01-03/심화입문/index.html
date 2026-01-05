@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문 + 함수 + return </title>
+    <script>
+        {
+            function calculate(num1,num2,operator) {
+                if (operator === '+') {
+                    return num1 + num2;
+                } else if (operator === '*') {
+                    return num1 * num2;
+                } else{
+                    return '지원하지 않는 연산입니다.'
+                }
+                
+            }
+
+            console.log(calculate(3,5,'+'))
+            console.log(calculate(3,5,'*'))
+            console.log(calculate(3,5,'-'))
+        }
+
+        //리팩터링 버젼
+        {
+            function calculate(num1,num2,operator) {
+                if (operator === '+') return num1 + num2;
+                if (operator ==='*') return num1 * num2;
+                return '지원하지 않는 연산입니다.'
+            }
+
+            console.log(calculate(6,5,'+'))
+        }
+
+        // switch문 버전
+        {
+            function calculate(num1,num2,operator) {
+                switch (operator) {
+                    case '+':
+                        return num1 + num2;
+                    case '-':
+                        return num1 * num2;
+                    default:
+                        return '지원하지않는 연산입니다.'
+                }
+            }
+        }
+        // 함수 + 반복문
+        {
+            function printGugudan(dan) {
+                for (let i = 1; i <= 9; i++) {
+                    
+                    console.log(dan + '*' + i + '=' + (dan * i));
+                }
+            }
+
+            printGugudan(3);
+        }
+        // 심화 실습 (3): 짝수 합계 계산기
+        {
+            function sum(limit) {
+                let sum = 0;
+
+                for (let i=1; i<= limit; i++) {
+                    if (i % 2 === 0) {
+                        sum = sum + i;
+                    }
+                } return sum;
+            } const total = sum(10);
+            console.log(`1~10 짝수 합: ${total}`)
+        }
+        // 심화 실습 로직마스터하기
+        {
+        function printDan(dan) {
+            if ( dan < 2 || dan > 9){
+             console.log("2~9단만 입력해주세요");
+            return;
+        }
+        
+
+        console.log(`=== ${dan}단 출력 ===`);
+        for (let i = 1; i <= 9; i++) {
+            console.log(`${dan} * ${i} = ${dan * i}`)
+
+            }}
+            printDan(3);
+            }
+
+            
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

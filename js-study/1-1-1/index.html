@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 + return + 스코프</title>
+    <script>
+        function add(a,b) {
+            return a + b; // a,b 매개변수 add (2,3) 인자 return = 결과 반환
+        }
+
+        function test() {
+            console.log('hi');
+        }
+
+        const result = test();
+        console.log(result); // console.log 출력만 return 값을 돌려줌 return 없으면 undefined
+
+        function text(a){
+            if (a > 5) {
+                return '크다';
+            }
+            console.log('여기 실행될까?');
+        }
+        text(10);  // return 만나면 함수는 바로 끝!
+
+        {sayHi();
+            function sayHi() {
+                console.log('hi');
+            }
+        } // 함수 선언문
+
+        {
+            sayHi2();
+            
+            const sayHi2 = function() {
+                console.log('hi');
+            };
+        } // 함수 표현식은 선언되기전에 못씀 이유 : 호이스팅 + TDZ 떄문
+
+
+        { // 함수 스코프
+            function test(){
+                let x= 10;
+            }
+
+            console.log(x);
+        } // 함수 안에서 만든 변수는 밖에서 못씀
+
+        {//블록 스코프
+            if (true) {
+                let y = 20;
+            }
+
+            console.log(y);
+        } // 이것도 밖에 있어서 못씀
+
+        function text(a) {
+            if (a>3) {
+                return a * 2;
+            }
+        }
+        console.log(text(2)); 
+        // 이건 if 값이 false라서 return을 만나지도 않고 실행되지않아서 undifind 나옴
+
+        {
+            function test(a) {
+                if(a>3){
+                    return '크다';
+                }
+                return '작다';
+            }
+
+            test(2);
+        } // 결과값 작다가 나온 첫번째 if문이 false라서 첫번째 return 실행 x 두번째 return 실행됨
+        // return은 조건마다 하나씩 있어도 됨
+
+        {// 기존방식
+            function isAdult(age) {
+                if( age >= 20) {
+                    return true;
+                } else {
+                    return false;
+                }
+                
+            }
+        }        
+        {// 실무용 축약 if없이 바로 return
+            function isAdult(age) {
+                return age >= 20;
+            } // 비교식 자체가 true 나 false를 만들기 때문에 바로 return 가능
+
+        }
+
+        {//실무에서 많이쓰는 예제
+            function isEmpty(value) {
+                return value === '';
+            }
+
+            function hasValue(value) {
+                return value !== '';
+            }
+        }
+
+        // 콜백 함수 한 문장 정의 : 함수에 전달되는 함수
+        {
+            function greet(callback){
+                callback();
+            }
+            function sayHello() {
+                console.log('안녕하세요');
+            }
+            greet(sayHello);
+        } // 콜백 함수를 안쓰면 항상 같은 행동만 함 콜백을 쓰면 어떤 행동을 할지는 밖에서 결정
+          // 단순하게 말하면 일은 내가할게 근데 뭘 할지는 너가 정해줘! 이런느낌
+
+          {
+            setTimeout(function() {
+                console.log('3초 뒤 실행');
+            },3000); //실무에서 많이 보이는 형태 첫번째 인자 : 콜백 함수 두번째 인자 : 시간
+            // 3초 뒤에 실행할 일을 함수로 넘김
+          }// 콜백 핵심 : 1. 함수는 값이다 2. 함수는 인자로 전달 가능 3. 나중에 실행된다.
+
+          {
+            function doSomething(callback) {
+                console.log('작업 시작');
+                callback();
+            }
+            function task() {
+                console.log('콜백 실행');
+            }
+            doSomething(task);
+          }
+          //예제 2
+          {
+            function calculate(a,b,callback) {
+                const result = callback(a,b);
+                console.log(result);
+            }
+            function add(x,y) {
+                return x + y;
+            }
+            calculate(3,5,add);
+
+          }
+          //예제 3
+          {
+            calculate(4,2, function(x,y){
+                return x*y;
+            })
+          }
+
+          // 배열 + 콜백 
+          // forEach = 하나씩 꺼내서 실행
+          {
+            const nums = [1,2,3]
+            
+            nums.forEach(function (num){
+                console.log(num);
+            })
+          } // 배열에서 하나 꺼냄 콜백 실행 다음요소 반복
+
+          {
+            const nums=[1,2,3]
+            nums.forEach(num => {
+                console.log(num);
+            });
+          }// forEach 는 return값이 없다 항상 undefined
+
+          {// map : 새 배열을 만든다
+            // const 새배열 = 배열.map(function (요소){ return 바꿀값;}); console.log(출력하고싶은);
+            const nums = [1,2,3];
+
+            const doubled = nums.map(function(num){
+                return num * 2;
+            });
+            console.log(doubled);
+        }/* 
+         forEach : 목적은 실행 return x 결과 undefined
+         map : 목적은 변환 return 필수 결과 새 배열
+        */
+        
+        {
+            /*filter(조건에 맞는 것만 남긴다) const 새배열 = 배열.filter(function (요소){
+                return 조건;
+            }) */
+           const nums = [1,2,3,4,5];
+
+           const even = nums.filter(num =>{
+            return num % 2 === 0;
+           });
+           console.log(even);
+        }
+        // 화살표 + 한줄
+        {
+            const nums = [1,2,3,4,5]
+            const even = nums.filter(num => num % 2 === 0);
+            console.log(even);
+        }
+        // map + filter 같이쓰기
+        {
+            const nums = [1,2,3,4,5];
+
+            const result = nums
+            .filter(n => n % 2 ===0)
+            .map(n => n * 2);
+
+            console.log(result);
+        } // filter 에서 return 안쓰면 전부 false 취급
+
+        {/* 배열 매서드 끝판왕 reduce
+            여러값을 하나로 줄인다
+            배열.reduce(function(누적값,현재값){
+            return 새로운 누적값;
+            },초기값)*/
+            const nums = [1,2,3,4];
+
+            const sum = nums.reduce((acc,cur)=>{
+                return acc + cur;
+            },0);
+
+            console.log(sum);
+        }
+
+        {//실무자주쓰는 예제
+            const fruits = ['사과','바나나','사과'];
+
+            const count = fruits.reduce((acc,cur) => {
+                acc[cur] = (acc[cur] || 0) +1;
+                return acc;
+            },{});
+            console.log(count);
+        }
+
+        {// 총합계산
+            const cart= [
+                {price:1000},
+                {price:2000}
+            ];
+
+            const total = cart.reduce((acc,item)=>{
+                return acc + item.price;
+            },0);
+        } // reduce는 무조건 초기값 주기
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

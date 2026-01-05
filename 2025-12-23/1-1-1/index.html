@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습:성적 판별기</title>
+    <script>
+        {
+            function getGrade(score) {
+                if(score >=90){
+                    return 'A';
+                } else if (score >=80) {
+                    return 'B';
+                } else {
+                    return '재수강';
+                }
+            }
+            console.log(getGrade(95));
+            console.log(getGrade(82));
+            console.log(getGrade(60));
+        }
+
+        {//쉽게 쓰는버젼
+            function getGrade(score) {
+                if (score >= 90) return 'A';
+                if (score >= 80) return 'B';
+                if (score >= 70) return 'C';
+                return '재수강';
+            }
+        }
+
+        {//날씨 과제
+            function getOut(weather) {
+                if(weather === '맑음') return '선글라스';
+                if(weather === '비') return '우산';
+                if(weather === '눈') return '걍 나가';
+                
+            } console.log(getOut('맑음'))
+        }
+
+        {
+            /* switch 기본구조
+                switch (값){
+                    case 비교값:
+                        실행;
+                        break;
+                        default:
+                         실행;
+                }
+            
+            */
+           function getOut(weater) {
+            switch (weater) {
+                case '맑음':
+                    return '선글라스';
+                case '비':
+                    return '우산';
+                case '눈' :
+                    return '그냥나가';
+            
+                default:
+                    return '그냥나가';
+            }
+            
+           } console.log(getOut('맑음'))
+
+        }
+
+        {// weater 값으로 key 접근
+            const getGrade = (weather) =>
+        ({
+            '맑음': '선글라스',
+            '비': '우산',
+            '눈': '그냥나가'
+        }[weather] || '그냥 나가');
+        console.log(getGrade('맑음'));
+
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

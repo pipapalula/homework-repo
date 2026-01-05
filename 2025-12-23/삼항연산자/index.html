@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼항 연산자로 한줄만에 판별하기</title>
+    <script>
+        /* 삼항 연산자 기본형태
+            조건 ? 참일때값 : 거짓일때값 
+            반드시 값이 나온다 (return 가능)
+        */
+       //if 문
+       {
+        function isAdult(age){
+            if(age >= 20) {
+                return '성인';
+            } else {
+                return '미성년자';
+            }
+        } console.log(isAdult(29));
+       }
+       //삼항 연산자로 
+       {
+        function isAdult(age) {
+            return age >= 20 ? '성인':'미성년자';
+        } console.log(isAdult(29))
+       }
+       //실습: 짝수 홀수 판별
+       {
+        const number = 7;
+
+        const result = number % 2 === 0 ? '짝수' : '홀수';
+
+        console.log(result);
+       }
+       // 실습 1
+       {
+        const score = 85;
+
+        const result = score >= 80 ? '합격' : '불합격';
+        console.log(result);
+       }
+
+       // 실습2 (함수에서 사용)
+       {
+        function getOutfit(weather) {
+            return weather === '비' ? '우산' : '그냥 나가';
+        }
+
+        console.log(getOutfit('비'))
+       }
+       //실습3 
+       {
+        function isPass(score) {
+            return score >= 60 ? '통과' : '탈락'
+        }
+        console.log(isPass(60))
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

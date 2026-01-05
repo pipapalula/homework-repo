@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* while 조건 true인 동안 계속 반복
+            while (조건) {
+             실행할 코드
+            }
+             for = 반복 횟수 알때!
+             while = 언제 끝날지 조건으로 판단할 때
+        */
+
+        {
+            let count = 5;
+
+            while (count > 0) {
+                console.log(count);
+                count--;
+            }
+
+            console.log('발사!')
+        }
+        /* while + break 
+            while 이해 break 역할 이해
+            "조건 + 탈출" 
+        */
+        let count =5;
+        while (count > 0) {
+            if (count === 3 ){
+                console.log('중단!');
+                break;
+            }
+            console.log(count);
+            count--;
+        }
+
+        {
+            let count =5;
+            while (count >5){
+                if (conunt ===2) {
+                    console.log('정지');
+                    break;
+                }
+            }
+        }
+        // 실습 숫자 차기
+        {
+           for (let i = 1; i <= 10; i++) {
+            if (i === 7 ) {
+                console.log('찾았다!')
+                break;
+            }
+
+            if ( i % 2 === 0) {
+                continue;
+            }
+
+            console.log(i);
+           }
+        }
+        //while문 버젼
+        {
+            let i =1;
+            
+            while (i <= 10){
+                if (i === 7 ) {
+                    consol.log('찾았다!');
+                    break;
+                }
+
+                if( i % 2 === 0){
+                    i++;
+                    continue;
+                }
+
+                console.log(i);
+                i++;
+            }
+        }
+        // 배열 + 반복문 실전 문제
+        {
+            const nums = [1,2,3,4,5,6];
+
+            for (let n of nums) {
+                if (n % 2 === 0) {
+                    console.log(n);
+                }
+            }
+        }
+
+        {
+            function introduce(name) {
+                console.log(`안녕하세요, 저는 ${name}입니다.`)
+            }
+
+            introduce('정범');
+        }
+        //retirm 버전
+        {
+            function introduce(name) {
+                return `안녕하세요, 저는 ${name}입니다.`;
+            }
+
+            console.log(introduce('정범'));
+        }
+        // 매개변수 + return  개념
+        function add(a,b) {
+            return a+b;
+        }
+
+        const result = add(3,5);
+        console.log(result);
+
+        // 화살표 함수
+        {
+            const add = (a,b) => a + b;
+
+            console.log(add(3,5));
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
